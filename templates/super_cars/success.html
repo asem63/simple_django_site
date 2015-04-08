@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Index{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static "stylesheets/index.css" %}"/>
+{% endblock %}
+        
+{% block js %}
+{% endblock %}
+
+{% block content %}
+<div class="info">
+	Choosed manufacturer {{ manufacturer.name }}, model {{ car.name }}, with mileage {{ mileage }} km.
+</div>	
+{% endblock %}
+
+

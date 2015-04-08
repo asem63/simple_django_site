@@ -1,0 +1,24 @@
+form {
+	width: 500px;
+}
+
+label, input, select {
+	display: inline-block;
+}
+
+label {
+	width: 40%;
+	text-align: right;
+}
+select{
+	width: 55%
+}
+
+input[type="number"]{
+	width: 53.5% 
+}
+
+input[type="submit"] {
+	float: right;
+	margin-right: 4%;
+}
