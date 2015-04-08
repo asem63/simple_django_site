@@ -2,7 +2,7 @@
 Simple django site with database.
 
 Used:
-Django 1.8 and python 2.7
+Django 1.8 and python 2.7, SQLite as database.
 
 No frontend frameworks used (Jquery, Bootstrap).
 
