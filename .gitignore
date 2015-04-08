@@ -5,3 +5,6 @@ __pycache__/
 #IDEA files
 *.iml
 .idea
+
+#vim swp files
+*.swp
