@@ -1,6 +1,6 @@
+# coding: utf-8
 from django.db import models
 
-# Create your models here.
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=200)
@@ -8,9 +8,10 @@ class Manufacturer(models.Model):
     def __unicode__(self):
         return u'%s' % (self.name)
 
+
 class Car(models.Model):
-    manufacturer =  models.ForeignKey(Manufacturer)
+    manufacturer = models.ForeignKey(Manufacturer)
     name = models.CharField(max_length=200)
-    
+
     def __unicode__(self):
         return u'%s' % (self.name)

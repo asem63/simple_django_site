@@ -1,13 +1,16 @@
-from django.http import Http404, HttpResponse 
-from django.template import RequestContext
+# coding: utf-8
+
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 from django.views.generic.edit import FormView
-import json
 
 from .forms import CarSelectForm
 
-from .models import Manufacturer, Car
+from .models import Car
 
 
 class CarView(FormView):
@@ -16,15 +19,13 @@ class CarView(FormView):
     success_url = '/'
 
     def form_valid(self, form):
-        return render_to_response('super_cars/success.html',
-                                    form.cleaned_data)
+        return render_to_response(
+            'super_cars/success.html', form.cleaned_data
+        )
 
 
 @csrf_exempt
+@require_http_methods(["GET"])
 def ajax_api(req, manf):
-    if req.method == 'GET':
-        carsQS = Car.objects.filter(manufacturer__name=manf).values('name');
-        carsList = [car for car in carsQS]
-        carsJson = json.dumps(carsList)
-        return HttpResponse(carsJson)
-    return HttpResponse("NOT GET")
+    carsQS = Car.objects.filter(manufacturer__name=manf).values('name')
+    return HttpResponse(json.dumps(list(carsQS)))
